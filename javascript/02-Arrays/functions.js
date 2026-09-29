@@ -22,6 +22,7 @@ console.log(len);
 //  Adding Elements to the Array
 
 // unshift : Add element in the starting of the array
+// push: Add the element in the end of the array
 let nums = [1, 2, 3, 4, 5, 6];
 nums.unshift(7);
 console.log(nums);

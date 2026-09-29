@@ -7,3 +7,7 @@ function add(a, b) {
   return a + b;
 }
 console.log(add(21, 223));
+
+function SumOfNO() {
+  let sum = 0;
+}

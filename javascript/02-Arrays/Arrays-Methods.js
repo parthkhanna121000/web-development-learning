@@ -39,3 +39,35 @@ a2.pop();
 a2.pop();
 a2.pop();
 console.log(a2);
+
+// &
+const prices = [100, 200, 300];
+const doubleprices = prices.map((price) => price * 2);
+console.log(doubleprices);
+
+const numbers = [1, 2, 3, 4];
+
+const squares = numbers.map((nums) => {
+  return nums * nums;
+});
+console.log(squares);
+
+// for each
+const arr = [10, 20, 30, 40, 50];
+let sum = 0;
+
+arr.forEach((number) => {
+  sum += number;
+});
+console.log(sum);
+
+// filter
+
+const arr1 = [10, 20, 30, 40, 90];
+const newarr1 = arr1.filter((nums) => nums > 30);
+console.log(newarr1);
+
+// const add = (a, b) => {
+//   return a + b;
+// };
+// console.log(add(22.12, 312));
