@@ -12,3 +12,5 @@ console.log(userProfile.name); // Output: Parth (Accesses the name property)
 
 let colors = ["red", "green", "blue"];
 console.log(colors[3]);
+
+console.log(userProfile.role);
