@@ -1,8 +1,4 @@
 
-/* ==============================
-   GLOBAL RESET
-================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -11,253 +7,257 @@
 
 :root {
     --bg-primary: #080b16;
-    --bg-secondary: #11182b;
-    --surface: rgba(22, 30, 52, 0.85);
-    --display-bg: rgba(5, 9, 22, 0.75);
-
+    --surface: rgba(22, 30, 52, 0.92);
+    --display-bg: #080d1c;
     --text-primary: #f8fafc;
     --text-secondary: #8994ad;
-
     --button-bg: #202b43;
-    --button-hover: #30405f;
-
+    --button-hover: #354563;
     --accent: #8b7cff;
-    --accent-hover: #a397ff;
-
-    --operator-bg: #31305a;
+    --operator-bg: #34305d;
     --function-bg: #34415a;
-
     --border: rgba(255, 255, 255, 0.08);
 }
-
-/* ==============================
-   BODY
-================================= */
 
 body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(99, 102, 241, 0.18),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(139, 92, 246, 0.15),
-            transparent 35%
-        ),
-        var(--bg-primary);
-
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
     color: var(--text-primary);
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.18), transparent 35%),
+        radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.15), transparent 35%),
+        var(--bg-primary);
 }
 
-/* ==============================
-   CALCULATOR CONTAINER
-================================= */
-
 .calculator {
-    width: 360px;
+    width: min(100%, 510px);
     padding: 24px;
-
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 28px;
-
+    border-radius: 26px;
     backdrop-filter: blur(20px);
 
     box-shadow:
         0 25px 60px rgba(0, 0, 0, 0.45),
         inset 0 1px 0 rgba(255, 255, 255, 0.06);
-
-    transition: transform 0.3s ease;
 }
 
-.calculator:hover {
-    transform: translateY(-3px);
+.calculator-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
 }
 
-/* ==============================
-   DISPLAY
-================================= */
+.calculator-header h1 {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.calculator-header p {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.mode-button {
+    padding: 10px 17px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--operator-bg);
+    color: #c5baff;
+    font-weight: 700;
+    cursor: pointer;
+}
 
 .display {
-    min-height: 140px;
-    padding: 22px 18px;
-    margin-bottom: 22px;
-
+    min-height: 125px;
+    padding: 20px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-
     overflow: hidden;
-
     background: var(--display-bg);
     border: 1px solid var(--border);
-    border-radius: 20px;
-
-    box-shadow: inset 0 3px 12px rgba(0, 0, 0, 0.2);
-
-    word-break: break-all;
+    border-radius: 18px;
 }
 
-#previous-operand {
-    min-height: 28px;
+.display-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     color: var(--text-secondary);
-    font-size: 17px;
-    font-weight: 400;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+#memory-indicator {
+    color: var(--accent);
 }
 
 #current-operand {
     max-width: 100%;
-    color: var(--text-primary);
-    font-size: 42px;
+    font-size: clamp(25px, 7vw, 38px);
     font-weight: 600;
-    letter-spacing: -1.5px;
-
-    transition: all 0.2s ease;
+    letter-spacing: -1px;
+    overflow-wrap: anywhere;
+    text-align: right;
 }
-
-/* ==============================
-   BUTTON GRID
-================================= */
 
 .buttons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 9px;
 }
 
-/* ==============================
-   COMMON BUTTON STYLE
-================================= */
-
 button {
-    height: 66px;
-
+    min-width: 0;
+    height: 57px;
     border: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 18px;
-
+    border-radius: 13px;
     background: var(--button-bg);
     color: var(--text-primary);
-
-    font-size: 21px;
+    font-family: inherit;
+    font-size: 17px;
     font-weight: 500;
-
     cursor: pointer;
-
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    transition: 0.2s ease;
 }
 
 button:hover {
     background: var(--button-hover);
     transform: translateY(-2px);
-
-    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
 }
 
 button:active {
     transform: scale(0.94);
 }
 
-/* ==============================
-   SPECIAL BUTTONS
-================================= */
-
-.span-two {
-    grid-column: span 2;
-}
-
 .function {
     background: var(--function-bg);
-    color: #b9c4db;
+    color: #c3cee5;
+    font-size: 14px;
 }
 
-.function:hover {
-    background: #465675;
+.scientific {
+    background: #292849;
+    color: #c2b9ff;
+    font-size: 15px;
 }
-
-/* ==============================
-   OPERATORS
-================================= */
 
 .operator {
     background: var(--operator-bg);
-    color: #b8aaff;
-
-    font-size: 25px;
-    font-weight: 600;
+    color: #c2b5ff;
+    font-size: 21px;
 }
-
-.operator:hover {
-    background: #49447d;
-}
-
-/* ==============================
-   EQUALS BUTTON
-================================= */
 
 .equals {
-    background: linear-gradient(
-        135deg,
-        #7867f8,
-        #9b72ed
-    );
-
+    background: linear-gradient(135deg, #7867f8, #9b72ed);
     color: white;
-    font-size: 25px;
+    font-size: 23px;
     font-weight: 700;
-
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.25);
 }
 
 .equals:hover {
-    background: linear-gradient(
-        135deg,
-        #9385ff,
-        #b18bff
-    );
-
-    box-shadow: 0 7px 20px rgba(139, 92, 246, 0.4);
+    background: linear-gradient(135deg, #9385ff, #b18bff);
 }
 
-/* ==============================
-   RESPONSIVE DESIGN
-================================= */
+.mode-button:hover {
+    background: #49447d;
+}
 
-@media (max-width: 400px) {
+.history-panel {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--display-bg);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+}
+
+.history-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.history-heading h2 {
+    font-size: 14px;
+}
+
+.history-heading button {
+    height: auto;
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+#history-list {
+    list-style: none;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#history-list li {
+    padding: 10px 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    overflow-wrap: anywhere;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+    color: var(--text-secondary);
+    font-size: 10px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 420px) {
     body {
-        padding: 12px;
+        padding: 10px;
     }
 
     .calculator {
-        width: 100%;
-        padding: 18px;
-        border-radius: 24px;
+        padding: 15px;
+        border-radius: 20px;
+    }
+
+    .buttons {
+        gap: 7px;
     }
 
     button {
-        height: 60px;
-        border-radius: 15px;
+        height: 53px;
+        border-radius: 11px;
+        font-size: 15px;
     }
 
-    .display {
-        min-height: 125px;
+    .scientific {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 340px) {
+    button {
+        height: 47px;
+        font-size: 13px;
     }
 
-    #current-operand {
-        font-size: 36px;
+    .calculator {
+        padding: 10px;
     }
 }

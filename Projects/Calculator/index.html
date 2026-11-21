@@ -4,45 +4,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Calculator</title>
+    <title>Scientific Calculator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="calculator">
+    <main class="calculator">
 
-        <div class="display">
-            <div id="previous-operand"></div>
-            <div id="current-operand">0</div>
-        </div>
+        <header class="calculator-header">
+            <div>
+                <h1>Calculator</h1>
+                <p>Scientific Calculator</p>
+            </div>
+            <button class="mode-button" data-action="angle">DEG</button>
+        </header>
 
-        <div class="buttons">
-            <button class="span-two function" data-action="clear">AC</button>
+        <section class="display">
+            <div class="display-info">
+                <span id="previous-operand"></span>
+                <span id="memory-indicator"></span>
+            </div>
+
+            <div id="current-operand" aria-live="polite">0</div>
+        </section>
+
+        <section class="buttons">
+
+            <!-- Row 1 -->
+            <button class="function" data-action="memory-clear">MC</button>
+            <button class="function" data-action="memory-recall">MR</button>
+            <button class="function" data-action="memory-add">M+</button>
+            <button class="function" data-action="memory-subtract">M−</button>
+            <button class="function" data-action="clear">AC</button>
+
+            <!-- Row 2 -->
+            <button class="scientific" data-insert="sin(">sin</button>
+            <button class="scientific" data-insert="cos(">cos</button>
+            <button class="scientific" data-insert="tan(">tan</button>
             <button class="function" data-action="delete">DEL</button>
-            <button class="operator" data-operator="/">÷</button>
+            <button class="operator" data-insert="/">÷</button>
 
-            <button data-number="7">7</button>
-            <button data-number="8">8</button>
-            <button data-number="9">9</button>
-            <button class="operator" data-operator="*">×</button>
+            <!-- Row 3 -->
+            <button class="scientific" data-insert="sqrt(">√</button>
+            <button class="scientific" data-insert="^2">x²</button>
+            <button class="scientific" data-insert="^">xʸ</button>
+            <button class="scientific" data-insert="(">(</button>
+            <button class="scientific" data-insert=")">)</button>
 
-            <button data-number="4">4</button>
-            <button data-number="5">5</button>
-            <button data-number="6">6</button>
-            <button class="operator" data-operator="-">−</button>
+            <!-- Row 4 -->
+            <button class="scientific" data-insert="log(">log</button>
+            <button class="scientific" data-insert="ln(">ln</button>
+            <button class="scientific" data-insert="!">n!</button>
+            <button class="scientific" data-insert="pi">π</button>
+            <button class="scientific" data-insert="e">e</button>
 
-            <button data-number="1">1</button>
-            <button data-number="2">2</button>
-            <button data-number="3">3</button>
-            <button class="operator" data-operator="+">+</button>
+            <!-- Row 5 -->
+            <button class="function" data-action="percentage">%</button>
+            <button data-insert="7">7</button>
+            <button data-insert="8">8</button>
+            <button data-insert="9">9</button>
+            <button class="operator" data-insert="*">×</button>
 
-            <button data-action="percentage">%</button>
-            <button data-number="0">0</button>
-            <button data-action="decimal">.</button>
+            <!-- Row 6 -->
+            <button class="scientific" data-insert="1/(">1/x</button>
+            <button data-insert="4">4</button>
+            <button data-insert="5">5</button>
+            <button data-insert="6">6</button>
+            <button class="operator" data-insert="-">−</button>
+
+            <!-- Row 7 -->
+            <button class="scientific" data-insert="abs(">abs</button>
+            <button data-insert="1">1</button>
+            <button data-insert="2">2</button>
+            <button data-insert="3">3</button>
+            <button class="operator" data-insert="+">+</button>
+
+            <!-- Row 8 -->
+            <button data-action="sign">±</button>
+            <button data-insert="0">0</button>
+            <button data-insert=".">.</button>
             <button class="equals" data-action="calculate">=</button>
-        </div>
+            <button class="function" data-action="history">HIST</button>
 
-    </div>
+        </section>
+
+        <section class="history-panel" id="history-panel" hidden>
+            <div class="history-heading">
+                <h2>Calculation History</h2>
+                <button data-action="history-clear">Clear</button>
+            </div>
+            <ul id="history-list"></ul>
+        </section>
+
+        <footer>
+            <span>Scientific mode</span>
+            <span>Built with HTML · CSS · JS</span>
+        </footer>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
